@@ -60,12 +60,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane3" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="botao_cli_cadastrar" min="-2" pref="144" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="botao_cli_editar" min="-2" pref="144" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="botao_cli_excluir" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="83" max="32767" attributes="0"/>
                           </Group>
@@ -78,9 +80,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="154" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="166" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="botao_cli_cadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="botao_cli_editar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="botao_cli_excluir" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -124,7 +127,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="campo_id" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="c_cli_id" min="-2" pref="151" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -138,8 +141,8 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="campo_cpf" min="-2" pref="151" max="-2" attributes="0"/>
-                                      <Component id="campo_nome" min="-2" pref="400" max="-2" attributes="0"/>
+                                      <Component id="c_cli_cpf" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="c_cli_nome" min="-2" pref="400" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -152,18 +155,18 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="campo_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="c_cli_id" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_cpf" min="-2" max="-2" attributes="0"/>
+                              <Component id="c_cli_cpf" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_nome" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="c_cli_nome" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -191,9 +194,9 @@
                     <Property name="text" type="java.lang.String" value="CPF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="campo_id">
+                <Component class="javax.swing.JTextField" name="c_cli_id">
                 </Component>
-                <Component class="javax.swing.JTextField" name="campo_cpf">
+                <Component class="javax.swing.JTextField" name="c_cli_cpf">
                 </Component>
                 <Component class="javax.swing.JButton" name="botao_cli_salvar">
                   <Properties>
@@ -217,10 +220,18 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_cli_cancelarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="campo_nome">
+                <Component class="javax.swing.JTextField" name="c_cli_nome">
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="botao_cli_cadastrar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastrar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_cli_cadastrarActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="botao_cli_editar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar"/>
@@ -244,7 +255,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtAreaCli">
+                <Component class="javax.swing.JTextArea" name="areaClientes">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -272,9 +283,11 @@
                           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="botao_pro_cadastrar" min="-2" pref="144" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="botao_pro_editar" min="-2" pref="144" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="botao_pro_excluir" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="83" max="32767" attributes="0"/>
                           </Group>
@@ -287,13 +300,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="154" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="160" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botao_pro_excluir" min="-2" max="-2" attributes="0"/>
-                          <Component id="botao_pro_editar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="botao_pro_cadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botao_pro_editar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botao_pro_excluir" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                       <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -301,6 +315,14 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JButton" name="botao_pro_cadastrar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastrar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_pro_cadastrarActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="botao_pro_editar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar"/>
@@ -341,7 +363,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="campo_nome_produto" min="-2" pref="400" max="-2" attributes="0"/>
+                                  <Component id="c_pro_nome" min="-2" pref="400" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -350,8 +372,8 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="campo_codigo" min="-2" pref="151" max="-2" attributes="0"/>
-                                      <Component id="campo_preco" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="c_pro_codigo" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="c_pro_preco" min="-2" pref="151" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -364,17 +386,17 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="campo_codigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="c_pro_codigo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="campo_preco" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="c_pro_preco" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="campo_nome_produto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="c_pro_nome" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
@@ -403,9 +425,9 @@
                     <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="campo_codigo">
+                <Component class="javax.swing.JTextField" name="c_pro_codigo">
                 </Component>
-                <Component class="javax.swing.JTextField" name="campo_preco">
+                <Component class="javax.swing.JTextField" name="c_pro_preco">
                 </Component>
                 <Component class="javax.swing.JButton" name="botao_pro_salvar">
                   <Properties>
@@ -429,7 +451,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_pro_cancelarActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="campo_nome_produto">
+                <Component class="javax.swing.JTextField" name="c_pro_nome">
                 </Component>
               </SubComponents>
             </Container>
@@ -448,7 +470,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtAreaProduto">
+                <Component class="javax.swing.JTextArea" name="area_produtos">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>

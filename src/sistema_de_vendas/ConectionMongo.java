@@ -17,8 +17,8 @@ public class ConectionMongo {
         try {
 
                 Mongo mongo = new Mongo("LocalHost", 27017);
-                db = mongo.getDB("sistemavendas");
-                tabelaClientes = db.getCollection("customers");
+                db = mongo.getDB("bancodedados");
+                tabelaClientes = db.getCollection("clientes");
                 tabelaProdutos = db.getCollection("produtos");
 
             } catch (UnknownHostException ex) {

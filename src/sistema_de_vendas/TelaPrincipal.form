@@ -221,6 +221,9 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="c_cli_nome">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="c_cli_nomeActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

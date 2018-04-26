@@ -2,9 +2,8 @@ package sistema_de_vendas;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
-
-
-
+import com.mongodb.WriteResult;
+            
 public final class TelaPrincipal extends javax.swing.JFrame {
 
     String modoCliente, modoProduto;    
@@ -21,6 +20,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         carregaTabelaCliente();
         carregaTabelaProduto();
         manipulaInterfaceProduto();
+        manipulaInterfaceClientes();
         
     }
     
@@ -28,16 +28,14 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         
         DBCursor cursor = conectionmongo.returnTableClientes().find();
         
-        while(cursor.hasNext()){
+//        while(cursor.hasNext()){
             areaClientes.setText(areaClientes.getText() + "\n" + cursor.next());
-        }
+//        }
         
     }
 
     public void carregaTabelaProduto(){
         
-        
-  
        DBCursor cursor = conectionmongo.returnTableProdutos().find();
         
         while(cursor.hasNext()){
@@ -52,17 +50,17 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 botao_pro_cadastrar.setEnabled(true);
                 botao_pro_editar.setEnabled(true);
                 botao_pro_excluir.setEnabled(true);
-                botao_pro_salvar.setEnabled(true);
-                botao_pro_cancelar.setEnabled(true);
-                c_pro_codigo.setEnabled(true);
-                c_pro_preco.setEnabled(true);
-                c_pro_nome.setEnabled(true);   
+                botao_pro_salvar.setEnabled(false);
+                botao_pro_cancelar.setEnabled(false);
+                c_pro_codigo.setEnabled(false);
+                c_pro_preco.setEnabled(false);
+                c_pro_nome.setEnabled(false);   
                 break;
             }
             case "Cadastrar":{
                 botao_pro_cadastrar.setEnabled(true);
-                botao_pro_editar.setEnabled(true);
-                botao_pro_excluir.setEnabled(true);
+                botao_pro_editar.setEnabled(false);
+                botao_pro_excluir.setEnabled(false);
                 botao_pro_salvar.setEnabled(true);
                 botao_pro_cancelar.setEnabled(true);
                 c_pro_codigo.setEnabled(true);
@@ -71,9 +69,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 break;
             }
             case "Editar":{
-                botao_pro_cadastrar.setEnabled(true);
+                botao_pro_cadastrar.setEnabled(false);
                 botao_pro_editar.setEnabled(true);
-                botao_pro_excluir.setEnabled(true);
+                botao_pro_excluir.setEnabled(false);
                 botao_pro_salvar.setEnabled(true);
                 botao_pro_cancelar.setEnabled(true);
                 c_pro_codigo.setEnabled(true);
@@ -82,14 +80,14 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 break;
             }
             case "Excluir":{
-                botao_pro_cadastrar.setEnabled(true);
-                botao_pro_editar.setEnabled(true);
+                botao_pro_cadastrar.setEnabled(false);
+                botao_pro_editar.setEnabled(false);
                 botao_pro_excluir.setEnabled(true);
                 botao_pro_salvar.setEnabled(true);
                 botao_pro_cancelar.setEnabled(true);
                 c_pro_codigo.setEnabled(true);
-                c_pro_preco.setEnabled(true);
-                c_pro_nome.setEnabled(true);   
+                c_pro_preco.setEnabled(false);
+                c_pro_nome.setEnabled(false);   
                 break;
             }
             case "Selecionado":{
@@ -101,6 +99,67 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 c_pro_codigo.setEnabled(true);
                 c_pro_preco.setEnabled(true);
                 c_pro_nome.setEnabled(true);   
+                break;
+            }
+            default: System.out.println("Modo inválida.");
+        }
+    }
+
+    public void manipulaInterfaceClientes(){
+        switch(modoCliente){
+            case "Navegar":{
+                botao_cli_cadastrar.setEnabled(true);
+                botao_cli_editar.setEnabled(true);
+                botao_cli_excluir.setEnabled(true);
+                botao_cli_salvar.setEnabled(false);
+                botao_cli_cancelar.setEnabled(false);
+                c_cli_id.setEnabled(false);
+                c_cli_cpf.setEnabled(false);
+                c_cli_nome.setEnabled(false);   
+                break;
+            }
+            case "Cadastrar":{
+                botao_cli_cadastrar.setEnabled(true);
+                botao_cli_editar.setEnabled(false);
+                botao_cli_excluir.setEnabled(false);
+                botao_cli_salvar.setEnabled(true);
+                botao_cli_cancelar.setEnabled(true);
+                c_cli_id.setEnabled(true);
+                c_cli_cpf.setEnabled(true);
+                c_cli_nome.setEnabled(true);   
+                break;
+            }
+            case "Editar":{
+                botao_cli_cadastrar.setEnabled(false);
+                botao_cli_editar.setEnabled(true);
+                botao_cli_excluir.setEnabled(false);
+                botao_cli_salvar.setEnabled(true);
+                botao_cli_cancelar.setEnabled(true);
+                c_cli_id.setEnabled(true);
+                c_cli_cpf.setEnabled(true);
+                c_cli_nome.setEnabled(true);   
+                break;
+            }
+            case "Excluir":{
+                botao_cli_cadastrar.setEnabled(false);
+                botao_cli_editar.setEnabled(false);
+                botao_cli_excluir.setEnabled(true);
+                botao_cli_salvar.setEnabled(true);
+                botao_cli_cancelar.setEnabled(true);
+                c_cli_id.setEnabled(true);
+                c_cli_cpf.setEnabled(false);
+                c_cli_nome.setEnabled(false);   
+                break;
+            }
+            case "Selecionado":{
+                botao_cli_cadastrar.setEnabled(true);
+                botao_cli_editar.setEnabled(true);
+                botao_cli_excluir.setEnabled(true);
+                botao_cli_salvar.setEnabled(false);
+                botao_cli_cancelar.setEnabled(false);
+                c_cli_id.setEnabled(false);
+                c_cli_cpf.setEnabled(false);
+                c_cli_nome.setEnabled(false);   
                 break;
             }
             default: System.out.println("Modo inválida.");
@@ -177,6 +236,12 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         botao_cli_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botao_cli_cancelarActionPerformed(evt);
+            }
+        });
+
+        c_cli_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_cli_nomeActionPerformed(evt);
             }
         });
 
@@ -464,35 +529,62 @@ public final class TelaPrincipal extends javax.swing.JFrame {
 
         modoProduto = "Excluir";
         manipulaInterfaceProduto();
-        BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("codigo: ", "'" + c_pro_codigo.getText()+"'");
-        DBCursor cursor = conectionmongo.returnTableProdutos().find(whereQuery);
         
-        conectionmongo.returnTableProdutos().remove(whereQuery);
-        
-        carregaTabelaProduto();
-        limpaCampos();
     }//GEN-LAST:event_botao_pro_excluirActionPerformed
 
     private void botao_pro_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_pro_cancelarActionPerformed
         modoProduto = "Navegar";
+        manipulaInterfaceProduto();
 
         limpaCampos();
     }//GEN-LAST:event_botao_pro_cancelarActionPerformed
 
     private void botao_pro_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_pro_salvarActionPerformed
 
-        BasicDBObject document = new BasicDBObject();
-        document.put("codigo: ", "'" + c_pro_codigo.getText() +"'");
-        document.put("preco: ", c_pro_preco.getText());
-        document.put("nome: ", "'" + c_pro_nome.getText() + "'");
-        conectionmongo.returnTableProdutos().insert(document);
+        if(modoProduto == "Cadastrar"){
+            BasicDBObject document = new BasicDBObject();
+            document.put("codigo: ", "'" + c_pro_codigo.getText() +"'");
+            document.put("preco: ", c_pro_preco.getText());
+            document.put("nome: ", "'" + c_pro_nome.getText() + "'");
+            conectionmongo.returnTableProdutos().insert(document);
 
+            carregaTabelaProduto();
+            modoProduto = "Navegar";
+            manipulaInterfaceProduto();
+
+            limpaCampos();
+        } else if(modoProduto == "Editar"){
+        
+           
+            BasicDBObject whereQuery = new BasicDBObject();
+            BasicDBObject whereQuery2 = new BasicDBObject();
+
+            whereQuery.put("codigo: ", "'" + c_pro_codigo.getText() +"'");
+            whereQuery2.put("codigo: ", "'" + c_pro_codigo.getText() +"'");
+            whereQuery2.put("preco: ", c_pro_preco.getText());
+            whereQuery2.put("nome: ", "'" + c_pro_nome.getText() + "'");
+            conectionmongo.returnTableProdutos().update(whereQuery, whereQuery2);
+        
+//        conectionmongo.returnTableClientes().update(whereQuery, whereQuery);
+        
         carregaTabelaProduto();
-        modoProduto = "Navegar";
-        manipulaInterfaceProduto();
+            modoProduto = "Navegar";
+            manipulaInterfaceProduto();
+        
+        
+        } else if(modoProduto == "Excluir"){
+            
+            manipulaInterfaceProduto();
+            BasicDBObject whereQuery = new BasicDBObject();
+            whereQuery.put("codigo: ", "'" + c_pro_codigo.getText()+"'");
+            DBCursor cursor = conectionmongo.returnTableProdutos().find(whereQuery);
 
-        limpaCampos();
+            conectionmongo.returnTableProdutos().remove(whereQuery);
+
+            carregaTabelaProduto();
+            limpaCampos();
+            
+        }
     }//GEN-LAST:event_botao_pro_salvarActionPerformed
 
     private void botao_pro_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_pro_editarActionPerformed
@@ -509,45 +601,78 @@ public final class TelaPrincipal extends javax.swing.JFrame {
 
     private void botao_cli_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cli_excluirActionPerformed
         
-//        modoCliente = "Excluir";
-//        manipulaInterfaceProduto();
-        BasicDBObject whereQuery1 = new BasicDBObject();
-        whereQuery1.put("id:", "'" + c_cli_id.getText()+"'");
-        DBCursor cursor = conectionmongo.returnTableClientes().find(whereQuery1);
+        modoCliente = "Excluir";
+        manipulaInterfaceClientes();
         
-        conectionmongo.returnTableClientes().remove(whereQuery1);
-                
-        carregaTabelaCliente();
-        limpaCampos();
     }//GEN-LAST:event_botao_cli_excluirActionPerformed
 
     private void botao_cli_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cli_editarActionPerformed
+        
         modoCliente = "Editar";
+        manipulaInterfaceClientes();
+        limpaCampos();
+
     }//GEN-LAST:event_botao_cli_editarActionPerformed
 
     private void botao_cli_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cli_cadastrarActionPerformed
+        
         modoCliente = "Cadastrar";
-
+        manipulaInterfaceClientes();
         limpaCampos();
+        
     }//GEN-LAST:event_botao_cli_cadastrarActionPerformed
 
     private void botao_cli_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cli_cancelarActionPerformed
         modoCliente = "Navegar";
-
+        manipulaInterfaceClientes();
         limpaCampos();
     }//GEN-LAST:event_botao_cli_cancelarActionPerformed
 
     private void botao_cli_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_cli_salvarActionPerformed
 
-        BasicDBObject document = new BasicDBObject();
-        document.put("id:", "'" + c_cli_id.getText() +"'");
-        document.put("cpf:", c_cli_cpf.getText());
-        document.put("nome:", "'" + c_cli_nome.getText() + "'");
-        conectionmongo.returnTableClientes().insert(document);
-        carregaTabelaCliente();
+        if(modoCliente == "Cadastrar"){
+            BasicDBObject document = new BasicDBObject();
+            document.put("id: ", "'" + c_cli_id.getText() +"'");
+            document.put("cpf: ", c_cli_cpf.getText());
+            document.put("nome: ", "'" + c_cli_nome.getText() + "'");
+            conectionmongo.returnTableClientes().insert(document);
 
-        limpaCampos();
+            carregaTabelaCliente();
+            modoCliente = "Navegar";
+            manipulaInterfaceClientes();
+
+            limpaCampos();
+        } else if(modoCliente == "Excluir"){
+            
+            manipulaInterfaceClientes();
+            BasicDBObject whereQuery = new BasicDBObject();
+            whereQuery.put("id: ", "'" + c_cli_id.getText()+"'");
+            DBCursor cursor = conectionmongo.returnTableClientes().find(whereQuery);
+
+            conectionmongo.returnTableClientes().remove(whereQuery);
+
+            carregaTabelaCliente();
+            limpaCampos();
+            
+        } 
+//        else if(modoCliente == "Editar"){
+//            BasicDBObject whereQuery = new BasicDBObject();
+//            BasicDBObject whereQuery2 = new BasicDBObject();
+//
+//            whereQuery.put("id:", "'" + c_cli_id.getText()+"'");
+//            whereQuery2.put("nome:", "'" + c_cli_nome.getText()+"'");
+//            conectionmongo.returnTableClientes().update(whereQuery, whereQuery2);
+//        
+////        conectionmongo.returnTableClientes().update(whereQuery, whereQuery);
+//        
+//        carregaTabelaCliente();
+//        }
+        
     }//GEN-LAST:event_botao_cli_salvarActionPerformed
+
+    private void c_cli_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_cli_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c_cli_nomeActionPerformed
  
     /**
      * @param args the command line arguments
